@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     height: "100vw",
     borderRadius: "5px",
   },
+  heading: {
+    display: "flex",
+    marginLeft: "100px"
+  }
 }));
 
 const Landing = () => {
@@ -73,9 +77,12 @@ const Landing = () => {
             </Link>
           </Paper>
         </Grid>
-        <Grid item xs={12} lg={12} md={12}>
+     
+        <Grid item xs={8} lg={8} md={8}>
           <Paper className={classes.meetMochi}>
+            <div className={classes.heading}>
             <h1>Meet Satoshi-Mochi</h1>
+            </div>
             <ul className={classes.meetMochi}>
               <Animate>Highly Versatile</Animate>
               <Animate2>Doesn't Bark</Animate2>
@@ -83,6 +90,9 @@ const Landing = () => {
               <Animate2>Will eat your food when not looking</Animate2>
             </ul>
           </Paper>
+        </Grid>
+        <Grid item xs={4} lg={4} md={4}>
+          <h1>YEEEE</h1>
         </Grid>
         <Grid item xs={12} lg={6}>
           <Paper className={classes.paper}>

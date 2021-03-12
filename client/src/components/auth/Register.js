@@ -1,33 +1,27 @@
+
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import { Input } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
-  },
-}));
-
+import Grid from "@material-ui/core/Grid";
+import "./auth.css"
+import { PaperMe, PaperContainer } from "../cards/card1"
+import { Button } from "@material-ui/core";
+import HomeIcon from '@material-ui/icons/Home';
 class Register extends Component {
-  state = {
-    name: "",
-    email: "",
-    password: "",
-    password2: "",
-    errors: {},
-  };
+ 
+    state = {
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
+      hear: "",
+      errors: {},
+    };
+  
 
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
@@ -56,6 +50,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
+      hear: this.state.hear
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -65,15 +60,11 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col s8 offset-s2">
-            <Paper elevation={3}>
-              <Link to="/" className="btn-flat waves-effect">
-                <i className="material-icons left">keyboard_backspace</i> Back
-                to home
-              </Link>
-            </Paper>
+     <>
+            <Link to="/" className="btn-flat waves-effect">
+              <HomeIcon />
+            </Link>
+
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
                 <b>Register</b> below
@@ -82,10 +73,13 @@ class Register extends Component {
                 Already have an account? <Link to="/login">Log in</Link>
               </p>
             </div>
-
+            <PaperContainer>
             <form noValidate onSubmit={this.onSubmit}>
-              <div className="input-field col s12">
-                <Input
+            <PaperMe className="figure">
+            <Grid item xs={12} lg={12} md={12}>
+
+            <label htmlFor="name"><h3>Name *</h3></label>
+                <input
                   onChange={this.onChange}
                   value={this.state.name}
                   error={errors.name}
@@ -95,12 +89,14 @@ class Register extends Component {
                     invalid: errors.name,
                   })}
                 />
-                <label htmlFor="name">Name</label>
                 <span className="red-text">{errors.name}</span>
-              </div>
-
-              <div className="input-field col s12">
-                <Input
+               
+                </Grid>
+                  <br />
+                  <Grid item xs={12} lg={12} md={12}>
+           
+                <label htmlFor="email"><h3>Email *</h3></label>
+                <input
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
@@ -110,12 +106,15 @@ class Register extends Component {
                     invalid: errors.email,
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                
                 <span className="red-text">{errors.email}</span>
-              </div>
-
-              <div className="input-field col s12">
-                <Input
+          
+                </Grid>
+                <br />
+                <Grid item xs={12} lg={12} md={12}>
+       
+                <label htmlFor="password"><h3>Password *</h3></label>
+                <input
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
@@ -125,12 +124,15 @@ class Register extends Component {
                     invalid: errors.password,
                   })}
                 />
-                <label htmlFor="password">Password</label>
+               
                 <span className="red-text">{errors.password}</span>
-              </div>
-
-              <div className="input-field col s12">
-                <Input
+         
+                </Grid>
+                <br />
+                <Grid item xs={12} lg={12} md={12}>
+          
+                <label htmlFor="password2"><h3>Repeat Password *</h3></label>
+                <input
                   onChange={this.onChange}
                   value={this.state.password2}
                   error={errors.password2}
@@ -140,28 +142,54 @@ class Register extends Component {
                     invalid: errors.password2,
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+              
                 <span className="red-text">{errors.password2}</span>
-              </div>
-
+             
+                </Grid>
+                
+                <br />
+                <Grid item xs={12} lg={12} md={12}>
+          
+          <label htmlFor="hear"><h3>How Did You Hear About Us?</h3></label>
+          <input
+            onChange={this.onChange}
+            value={this.state.hear}
+            error={errors.hear}
+            id="hear"
+            type="text"
+            className={classnames("", {
+              invalid: errors.password2,
+            })}
+          />
+        
+          <span className="red-text">{errors.password2}</span>
+       
+          </Grid>
+                <h5>* Indicates Required</h5>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
+                <Button
                   style={{
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginTop: "1rem",
+                    background: "#484952",
+           
+                    color: "white"
                   }}
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Sign up
-                </button>
+                </Button>
+                
               </div>
+              </PaperMe>  
             </form>
-          </div>
-        </div>
-      </div>
+            
+            </PaperContainer>
+      </>
+      
     );
   }
 }
