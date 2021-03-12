@@ -17,7 +17,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB successfully connected"))
+  .then(() => console.log("MongoDB successfully connected server is now running . . . "))
   .catch((err) => console.log(err));
 
 // Passport middleware
