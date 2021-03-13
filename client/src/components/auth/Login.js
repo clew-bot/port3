@@ -6,14 +6,13 @@ import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
+  
+    state = {
       email: "",
       password: "",
       errors: {},
     };
-  }
+  
 
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard

@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       height: "45vw",
       borderRadius: "5px",
+      
     },
   },
   meetMochi: {
