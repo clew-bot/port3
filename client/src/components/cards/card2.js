@@ -5,24 +5,37 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 5,
-    marginLeft: "10px",
+    marginLeft: "50px",
     marginRight: "10px",
   },
   paper: {
     padding: theme.spacing(7),
-    textAlign: "justify",
-    color: "gray",
+    color: "black",
+    background: "#f2f2f2",
+    marginLeft: "25vw",
+    marginRight: "25vw",
+
+    [theme.breakpoints.between("xs", "md")]: {
+      marginLeft: "5vw",
+      marginRight: "5vw",
+    },
   },
   paperContainer: {
     display: "flex",
-    justifyContent: "space-evenly",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // marginTop: "50px",
+    width: "100%",
 
-    marginTop: "60px",
+    // [theme.breakpoints.between("xs", "md")]: {
+    //   width: "100%",
+    // },
   },
   headerContainer: {
     display: "flex",
     justifyContent: "space-evenly",
-
+    background: "beige",
     flexDirection: "column",
     marginLeft: "30px",
   },
@@ -58,6 +71,10 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "5px",
       marginBottom: "20px",
     },
+    bigContainer: {
+      marginLeft: "20px",
+      marginRight: "20px",
+    },
   },
 }));
 
@@ -86,4 +103,8 @@ export function DescText({ children }) {
 export function HowBox({ children }) {
   const classes = useStyles();
   return <div className={classes.howDidYouHear}>{children}</div>;
+}
+export function BigContainer({ children }) {
+  const classes = useStyles();
+  return <div className={classes.bigContainer}>{children}</div>;
 }

@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-
+import { PaperMe, PaperContainer, BigContainer } from "../cards/card2";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
+import HomeIcon from "@material-ui/icons/Home";
 class Login extends Component {
   state = {
     email: "",
@@ -47,66 +51,112 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <>
-        <Link to="/" className="btn-flat waves-effect">
+      <BigContainer>
+        <Link to="/" className="">
           Back to home
         </Link>
 
         <h4>
           <b>Login</b> below
         </h4>
-        <p className="grey-text text-darken-1">
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
 
-        <form noValidate onSubmit={this.onSubmit}>
-          <input
-            onChange={this.onChange}
-            value={this.state.email}
-            error={errors.email}
-            id="email"
-            type="email"
-            className={classnames("", {
-              invalid: errors.email || errors.emailnotfound,
-            })}
-          />
-          <label htmlFor="email">Email</label>
-          <span className="">
-            {errors.email}
-            {errors.emailnotfound}
-          </span>
+        <PaperMe>
+          <Link to="/" className="">
+            <HomeIcon color="secondary" />
+          </Link>
 
-          <input
-            onChange={this.onChange}
-            value={this.state.password}
-            error={errors.password}
-            id="password"
-            type="password"
-            className={classnames("", {
-              invalid: errors.password || errors.passwordincorrect,
-            })}
-          />
-          <h1>djskjdskå</h1>
-          <label htmlFor="password">Password</label>
-          <span className="">
-            {errors.password}
-            {errors.passwordincorrect}
-          </span>
+          <form noValidate onSubmit={this.onSubmit}>
+            <Grid item xs={12} lg={12} md={12}>
+              <PaperContainer>
+                <h1
+                  className="redtxt"
+                  style={{
+                    marginBottom: "10px",
+                  }}
+                >
+                  Welcome back!
+                </h1>
+                <h5
+                  className="redtxt"
+                  style={{
+                    marginTop: "0px",
+                  }}
+                >
+                  Don't remember your password? That's honestly too bad.
+                </h5>
+                <label htmlFor="email">
+                  <h3 className="redtxt">Email: </h3>
+                </label>
+                <TextField
+                  helperText={[errors.email, errors.emailnotfound]}
+                  color="secondary"
+                  size="small"
+                  variant="outlined"
+                  onChange={this.onChange}
+                  value={this.state.email}
+                  error={errors.email}
+                  id="email"
+                  type="email"
+                  className={classnames("", {
+                    invalid: errors.email || errors.emailnotfound,
+                  })}
+                />
 
-          <button
-            style={{
-              width: "150px",
-              borderRadius: "3px",
-              letterSpacing: "1.5px",
-              marginTop: "1rem",
-            }}
-            type="submit"
-            className=""
-          >
-            Login
-          </button>
-        </form>
-      </>
+                {/* <span className="">
+                {errors.email}
+                {errors.emailnotfound}
+              </span> */}
+                <label htmlFor="email">
+                  <h3 className="redtxt">Password: </h3>
+                </label>
+                <TextField
+                  color="secondary"
+                  size="small"
+                  variant="outlined"
+                  helperText={[errors.password, errors.passwordincorrect]}
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id="password"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password || errors.passwordincorrect,
+                  })}
+                />
+
+                {/* <span className="">
+                {errors.password}
+                {errors.passwordincorrect}
+              </span> */}
+
+                <Button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    background: "#ba3f64",
+                    alignContent: "center",
+                    marginLeft: "10px",
+
+                    color: "white",
+                  }}
+                  type="submit"
+                  className=""
+                >
+                  Login
+                </Button>
+                <p className="redtxt">
+                  Don't have an account?{" "}
+                  <Link style={{ color: "inherit" }} to="/register">
+                    Register
+                  </Link>
+                </p>
+              </PaperContainer>
+            </Grid>
+          </form>
+        </PaperMe>
+      </BigContainer>
     );
   }
 }
