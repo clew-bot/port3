@@ -93,7 +93,7 @@ const Landing = () => {
           </Paper>
         </Grid>
         <Grid item xs={4} lg={4} md={4}>
-          <h1>YEEEE</h1>
+         
         </Grid>
         <Grid item xs={12} lg={6}>
           <Paper className={classes.paper}>
